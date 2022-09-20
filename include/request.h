@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 #include <curl/curl.h>
-#include <response.h>
-#define Web_get(URL, ...) requests::request(requests::URI(URL)).get_response()__VA_OPT__(.get<__VA_ARGS__>())
+#include "response.h"
+#define Web_get(URL, ...) requests::Request(requests::URI(URL)).get_response()__VA_OPT__(.get<__VA_ARGS__>())
 
 namespace requests {
 
