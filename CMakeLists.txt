@@ -24,3 +24,24 @@ include_directories(include)
 target_link_libraries(requests
         PUBLIC
         ${CURL_LIBRARIES})
+
+###
+### LIBRARY INSTALLATION
+###
+
+export(TARGETS requests FILE RequestsConfig.cmake)
+
+include(GNUInstallDirs)
+
+install(TARGETS requests EXPORT RequestsConfig
+        ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+install(EXPORT RequestsConfig
+        DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/Requests
+        EXPORT_LINK_INTERFACE_LIBRARIES)
+
+export(TARGETS requests FILE RequestsConfig.cmake)
