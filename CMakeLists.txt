@@ -17,14 +17,13 @@ set (requests_files
 add_library(requests ${requests_files})
 
 
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -fPIC")
-
 include_directories(include)
 
 target_link_libraries(requests
         PUBLIC
         ${CURL_LIBRARIES})
 
+target_compile_options(requests PRIVATE -pthread -fPIC)
 ###
 ### LIBRARY INSTALLATION
 ###
